@@ -31,7 +31,7 @@ const InputText = () => {
 		setResults([]);
 	};
 
-	const debouncedData = debounce(getResults, 1000);
+	const debouncedData = debounce(getResults, 500);
 
 	useEffect(() => {
 		if (value.length > 3)
