@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { searchSlice } from "./searchSlice";
-import { userIdSlice } from "./Slices/userIdSlice";
+import userSlice from "./Slices/userSlice";
 
 const store = configureStore({
 	reducer: {
 		search: searchSlice.reducer,
-		userId: userIdSlice.reducer,
+		user: userSlice,
 	},
 });
 

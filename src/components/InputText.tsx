@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import './InputText.css';
-import { FaGithub } from 'react-icons/fa';
-import axios from 'axios';
-import debounce from "lodash.debounce";
 import { IoCloseCircle } from 'react-icons/io5';
+import { FaGithub } from 'react-icons/fa';
+import debounce from "lodash.debounce";
+import axios from 'axios';
 import SuggestList from './SuggestList';
-
-const url_API = "https://api.github.com";
+import './InputText.css';
+import { IUser } from '../_interfaces/PropsTypes';
+import { url_API } from '../_domain/Api_url.ts';
 
 const InputText = () => {
-	const [value, setValue] = useState('');
-	const [results, setResults] = useState([]);
+	const [value, setValue] = useState<string>('');
+	const [results, setResults] = useState<IUser[]>([]);
 
 	const getResults = async (query: string) => {
 		try {
@@ -48,7 +48,7 @@ const InputText = () => {
 			<form action="">
 				<input
 					type="text"
-					className="input"
+					className={`input ${results.length > 0 ? 'active' : ''}`}
 					placeholder='search...'
 					onChange={(e) => handleChange(e)}
 					value={value}
@@ -62,7 +62,8 @@ const InputText = () => {
 				</div>
 			</form>
 			{
-				results.length > 0 && value.length > 0 && (
+				results.length > 0 &&
+				value.length > 0 && (
 					<SuggestList results={results} />
 				)
 			}

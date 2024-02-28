@@ -1,8 +1,31 @@
 .card {
 	max-width: 1000px;
-	margin: 0 auto;
-	height: 100%;
-	background-color: #164863;
+	/* margin: 0 auto; */
+	/* height: 100%; */
+	background-color: var(--white-color);
 	border-radius: 10px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.user-profile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* padding: 1rem; */
+	border-radius: 50%;
+	width: 250px;
+}
+
+.user-login {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #176B87;
+	text-decoration: none;
 }

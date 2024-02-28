@@ -1,3 +1,8 @@
+.suggest-list {
+	position: relative;
+	width: 100%;
+}
+
 .results {
 	position: absolute;
 	top: 100%;
@@ -5,16 +10,14 @@
 	width: 100%;
 	max-height: 300px;
 	overflow-y: auto;
-	background-color: #B4D4FF;
+	background-color: var(--quaternary-color);
 	border: 1px solid #176B87;
-	border-radius: 5px;
+	border-radius: 0 0 5px 5px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 	z-index: 1;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center; */
-	/* gap: 0.5rem; */
 }
 
 .result-list {
@@ -25,6 +28,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	cursor: pointer;
+	color: var(--white-color);
 
 	img {
 		width: 40px;
