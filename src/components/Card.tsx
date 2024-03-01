@@ -28,7 +28,6 @@ const Card = () => {
 	useEffect(() => {
 		if (login && login !== '') {
 			getUser();
-			console.log("user:", user);
 		}
 	}, [login]);
 

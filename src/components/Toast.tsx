@@ -5,7 +5,6 @@ type ToastProps = {
 };
 
 const Toast = ({ message, type }: ToastProps) => {
-	console.log('message:', message);
 	return (
 		<div className={`toast ${type}`}>
 			<p>{message}</p>
