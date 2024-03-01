@@ -1,6 +1,11 @@
 import './Kpis.css';
 
-const Kpis = (label: string, value: number | undefined, index: number) => {
+type KpisProps = {
+	label: string;
+	value: number | undefined;
+};
+
+const Kpis = ({ label, value }: KpisProps) => {
 	return (
 		<div>
 			<p>{label}</p>

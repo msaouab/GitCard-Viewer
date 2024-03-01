@@ -15,13 +15,11 @@ const Card = () => {
 	const [error, setError] = useState<string>('');
 
 	const login = selector.login;
-	console.log('login:', login)
 	const getUser = async () => {
 		try {
 			const response = await axios.get(`${user_Url_Api}${login}`);
 			setUser(response.data);
 		} catch (e: any) {
-			console.log('error:', e)
 			setError(e instanceof Error ? e.message : e.toString());
 			errorToast();
 		}
@@ -78,8 +76,8 @@ const Card = () => {
 						</article>
 						<article className='article kpis'>
 							{
-								kpis.map((kpis, index) => (
-									Kpis(kpis.label, kpis.value, index)
+								kpis.map((kpi, index) => (
+									<Kpis key={index} label={kpi.label} value={kpi.value} />
 								))
 							}
 						</article>
