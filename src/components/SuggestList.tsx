@@ -11,6 +11,7 @@ const SuggestList = (props: resultProps) => {
 
 	const handleChooseUser = (login: string) => {
 		dispathLogin(setLogin(login));
+		setUserSelected(true);
 	};
 
 	return (
