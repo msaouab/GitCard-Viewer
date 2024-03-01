@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
-import './Card.css';
-import Tooltip from './Tooltip';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { FaExternalLinkAlt, FaGithub, FaTwitter } from 'react-icons/fa';
 import { user_Url_Api } from '../_domain/github_url';
 import { IUser } from '../_interfaces/PropsTypes';
-import { FaExternalLinkAlt, FaGithub, FaTwitter } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import Tooltip from './Tooltip';
 import Toast from './Toast';
 import Kpis from './Kpis';
+import './Card.css';
 
 const Card = () => {
 	const selector = useSelector((state: any) => state.login);
@@ -28,6 +28,7 @@ const Card = () => {
 	useEffect(() => {
 		if (login && login !== '') {
 			getUser();
+			console.log("user:", user);
 		}
 	}, [login]);
 
@@ -38,16 +39,16 @@ const Card = () => {
 	const kpis = [
 		{
 			label: 'Followers',
-			value: user?.followers
+			value: user?.followers,
 		},
 		{
 			label: 'Following',
-			value: user?.following
+			value: user?.following,
 		},
 		{
 			label: 'Repos',
-			value: user?.public_repos
-		}
+			value: user?.public_repos,
+		},
 	];
 
 	return (
@@ -59,6 +60,7 @@ const Card = () => {
 							<img src={user.avatar_url} alt={user.login} className='user-profile' />
 							<Tooltip text={user.login} children={user.name} />
 							<p className='bio'>{user.bio}</p>
+							{user.location && <p>{user.location}</p>}
 							<div className='social-links'>
 								{
 									user.html_url && user.html_url !== '' &&
@@ -77,7 +79,7 @@ const Card = () => {
 						<article className='article kpis'>
 							{
 								kpis.map((kpi, index) => (
-									<Kpis key={index} label={kpi.label} value={kpi.value} />
+									<Kpis key={index} kpi={kpi} />
 								))
 							}
 						</article>

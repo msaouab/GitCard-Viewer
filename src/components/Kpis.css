@@ -1,8 +1,11 @@
 .kpis-item {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
 	border-radius: 5px;
-	padding: 0.5rem 1rem;
+	padding: 0.8rem 0.5rem;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	color: var(--primary-color);
 }

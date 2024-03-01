@@ -9,14 +9,14 @@ import { search_Url_Api } from '../_domain/github_url.ts';
 const InputText = () => {
 	const [value, setValue] = useState<string>('');
 	const [results, setResults] = useState<IUser[]>([]);
-	const [requestCount, setRequestCount] = useState<number>(0);
+	// const [requestCount, setRequestCount] = useState<number>(0);
 	const [loading, setLoading] = useState<boolean>(true);
 
 	const getResults = async (query: string) => {
 		try {
 			const response = await axios.get(`${search_Url_Api}${query}`);
 			setResults(response.data.items);
-			setRequestCount(prevCount => prevCount + 1);
+			// setRequestCount(prevCount => prevCount + 1);
 			setLoading(false);
 		} catch (e: any) {
 			throw new Error(e instanceof Error ? e.message : e.toString());
@@ -63,7 +63,7 @@ const InputText = () => {
 					<SuggestList results={results} />
 				)
 			}
-			<p>Total requests made: {requestCount}</p>
+			{/* <p>Total requests made: {requestCount}</p> */}
 		</header >
 	);
 };

@@ -8,7 +8,6 @@
 
 .article {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	gap: 1rem;
 	max-width: 1000px;
@@ -32,16 +31,10 @@
 	border: 2px solid var(--primary-color);
 }
 
-.user-login {
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: #176B87;
-	text-decoration: none;
-}
-
 .bio {
 	text-align: center;
 	font-size: 14px;
+	max-width: 300px;
 }
 
 .social-links {
@@ -78,5 +71,11 @@ svg {
 }
 
 .social-links a:hover::before {
-	opacity: 0.1;
+	opacity: 0.3;
+}
+
+.kpis {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
 }

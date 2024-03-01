@@ -4,7 +4,7 @@ import InputText from './components/InputText'
 
 function App() {
 	return (
-		<div className='app debug'>
+		<div className='app'>
 			<InputText />
 			<Card />
 		</div>

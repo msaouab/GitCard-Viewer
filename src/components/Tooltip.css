@@ -1,6 +1,7 @@
 .tooltip {
 	position: relative;
 	display: inline-block;
+	color: var(--primary-color);
 }
 
 .tooltip .tooltiptext {

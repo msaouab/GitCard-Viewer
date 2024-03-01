@@ -1,13 +1,16 @@
 import './Kpis.css';
 
 type KpisProps = {
-	label: string;
-	value: number | undefined;
+	kpi: {
+		label: string;
+		value: number | undefined;
+	  };
 };
 
-const Kpis = ({ label, value }: KpisProps) => {
+const Kpis = (kpi: KpisProps) => {
+	const { label, value } = kpi.kpi;
 	return (
-		<div>
+		<div className='kpis-item'>
 			<p>{label}</p>
 			<p>{value ? value : '-'}</p>
 		</div>
