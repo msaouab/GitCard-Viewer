@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
-import { IoCloseCircle } from 'react-icons/io5';
-import { FaGithub } from 'react-icons/fa';
 import debounce from "lodash.debounce";
 import axios from 'axios';
 import SuggestList from './SuggestList';
 import './InputText.css';
 import { IUser } from '../_interfaces/PropsTypes';
-import { url_API } from '../_domain/Api_url.ts';
+import { search_Url_Api } from '../_domain/github_url.ts';
 
 const InputText = () => {
 	const [value, setValue] = useState<string>('');
 	const [results, setResults] = useState<IUser[]>([]);
+	const [requestCount, setRequestCount] = useState<number>(0);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	const getResults = async (query: string) => {
 		try {
-			const response = await axios.get(`${url_API}/search/users?q=${query}`);
+			const response = await axios.get(`${search_Url_Api}${query}`);
 			setResults(response.data.items);
+			setRequestCount(prevCount => prevCount + 1);
+			setLoading(false);
 		} catch (e: any) {
 			throw new Error(e instanceof Error ? e.message : e.toString());
 		}
@@ -24,11 +26,7 @@ const InputText = () => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		setValue(value);
-	};
-
-	const deleteInput = () => {
-		setValue('');
-		setResults([]);
+		setLoading(true);
 	};
 
 	const debouncedData = debounce(getResults, 500);
@@ -44,7 +42,7 @@ const InputText = () => {
 	}, [value]);
 
 	return (
-		<div className='inputContainer'>
+		<header className='inputContainer'>
 			<form action="">
 				<input
 					type="text"
@@ -53,13 +51,11 @@ const InputText = () => {
 					onChange={(e) => handleChange(e)}
 					value={value}
 				/>
-				<div>
-					{
-						value.length > 3 ? (
-							<IoCloseCircle onClick={() => deleteInput()} />
-						) : (< FaGithub />)
-					}
-				</div>
+				{
+					value.length > 0 && loading && (
+						<span className='spinner-loader' />
+					)
+				}
 			</form>
 			{
 				results.length > 0 &&
@@ -67,7 +63,8 @@ const InputText = () => {
 					<SuggestList results={results} />
 				)
 			}
-		</div >
+			<p>Total requests made: {requestCount}</p>
+		</header >
 	);
 };
 

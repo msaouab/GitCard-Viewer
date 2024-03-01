@@ -4,6 +4,9 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './redux/store.ts'
 import { BrowserRouter } from 'react-router-dom'
+// import dotenv from 'dotenv';
+
+// dotenv.config();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<BrowserRouter>

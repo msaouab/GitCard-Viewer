@@ -7,7 +7,7 @@ type TooltipProps = {
 };
 
 const Tooltip = ({ children, text }: TooltipProps) => {
-	const [show, setShow] = useState(true);
+	const [show, setShow] = useState(false);
 
 	const showTooltip = () => {
 		setShow(true);
