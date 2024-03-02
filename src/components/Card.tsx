@@ -26,6 +26,7 @@ const Card = () => {
 	};
 
 	useEffect(() => {
+		console.log("login: ", login);
 		if (login && login !== '') {
 			getUser();
 		}
@@ -49,6 +50,7 @@ const Card = () => {
 			value: user?.public_repos,
 		},
 	];
+
 
 	return (
 		<main className='main'>

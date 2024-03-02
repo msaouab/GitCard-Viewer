@@ -47,7 +47,7 @@ const InputText = () => {
 				<input
 					type="text"
 					className={`input ${results.length > 0 ? 'active' : ''}`}
-					placeholder='search...'
+					placeholder='search for spotlight github...'
 					onChange={(e) => handleChange(e)}
 					value={value}
 				/>
