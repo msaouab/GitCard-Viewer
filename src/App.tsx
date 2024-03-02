@@ -1,5 +1,6 @@
 import './App.css'
 import Card from './components/Card'
+import Footer from './components/Footer'
 import InputText from './components/InputText'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 		<div className='app'>
 			<InputText />
 			<Card />
+			<Footer />
 		</div>
 	)
 }
