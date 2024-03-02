@@ -1,5 +1,5 @@
 import { FaExternalLinkAlt, FaGithub, FaTwitter } from 'react-icons/fa';
-import { user_Url_Api } from '../_domain/github_url';
+import { user_Url_Api } from '../_constant/github_url';
 import { IUser } from '../_interfaces/PropsTypes';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -26,7 +26,6 @@ const Card = () => {
 	};
 
 	useEffect(() => {
-		console.log("login: ", login);
 		if (login && login !== '') {
 			getUser();
 		}
@@ -62,7 +61,7 @@ const Card = () => {
 		},
 		{
 			label: 'Gists',
-			value: user?.public_gists,		
+			value: user?.public_gists,
 		},
 		{
 			label: 'Created',

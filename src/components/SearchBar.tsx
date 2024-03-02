@@ -3,7 +3,7 @@ import debounce from "lodash.debounce";
 import axios from 'axios';
 import SuggestList from './SuggestList.tsx';
 import { IUser } from '../_interfaces/PropsTypes.ts';
-import { search_Url_Api } from '../_domain/github_url.ts';
+import { search_Url_Api } from '../_constant/github_url.ts';
 import './SearchBar.css';
 
 const SearchBar = () => {
@@ -30,10 +30,8 @@ const SearchBar = () => {
 	const debouncedData = debounce(getResults, 500);
 
 	useEffect(() => {
-		if (value.length > 3)
+		if (value.length > 0)
 			debouncedData(value);
-		// if (value.length === 0)
-		// 	setResults([]);
 		return () => {
 			debouncedData.cancel();
 		};
