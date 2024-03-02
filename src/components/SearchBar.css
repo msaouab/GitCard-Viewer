@@ -1,13 +1,11 @@
-.inputContainer {
+.Search-Container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	max-width: 500px;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	padding: 2rem;
 }
 
 form {
@@ -22,17 +20,13 @@ form {
 	width: 100%;
 	margin: 0 auto;
 	border: 1px solid #176B87;
-	border-radius: 5px;
+	border-radius: 6px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 	padding: 10px 15px;
 	font-size: 1rem;
 	outline: none;
 	color: #176B87;
 	background-color: var(--white-color);
-}
-
-.active {
-	border-radius: 5px 5px 0 0;
 }
 
 input:focus {

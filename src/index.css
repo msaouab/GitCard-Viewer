@@ -19,6 +19,7 @@
 	--breakpoint-lg: 992px;
 	--breakpoint-xl: 1200px;
 	--breakpoint-xxl: 1400px;
+	--footer-height: 60px;
 }
 
 * {

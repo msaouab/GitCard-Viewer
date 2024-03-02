@@ -1,9 +1,10 @@
-.main {
+.section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
+	width: 100%;
 }
 
 .article {
@@ -31,7 +32,13 @@
 	border: 2px solid var(--primary-color);
 }
 
-.bio {
+@media (max-width: 600px) {
+	.user-profile {
+		width: 100px;
+	}
+}
+
+.bio, .location {
 	text-align: center;
 	font-size: 14px;
 	max-width: 300px;
@@ -78,4 +85,19 @@ svg {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
+}
+
+@media (max-width: 600px) {
+	.kpis {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 400px) {
+	.kpis {
+		grid-template-columns: 1fr;
+	}
+	.bio, .location {
+		font-size: 12px;
+	}
 }

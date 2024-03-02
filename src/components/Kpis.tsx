@@ -3,7 +3,7 @@ import './Kpis.css';
 type KpisProps = {
 	kpi: {
 		label: string;
-		value: number | undefined;
+		value: number | string | undefined;
 	  };
 };
 

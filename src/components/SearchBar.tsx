@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
 import debounce from "lodash.debounce";
 import axios from 'axios';
-import SuggestList from './SuggestList';
-import './InputText.css';
-import { IUser } from '../_interfaces/PropsTypes';
+import SuggestList from './SuggestList.tsx';
+import { IUser } from '../_interfaces/PropsTypes.ts';
 import { search_Url_Api } from '../_domain/github_url.ts';
+import './SearchBar.css';
 
-const InputText = () => {
+const SearchBar = () => {
 	const [value, setValue] = useState<string>('');
 	const [results, setResults] = useState<IUser[]>([]);
-	// const [requestCount, setRequestCount] = useState<number>(0);
 	const [loading, setLoading] = useState<boolean>(true);
 
 	const getResults = async (query: string) => {
 		try {
 			const response = await axios.get(`${search_Url_Api}${query}`);
 			setResults(response.data.items);
-			// setRequestCount(prevCount => prevCount + 1);
 			setLoading(false);
 		} catch (e: any) {
 			throw new Error(e instanceof Error ? e.message : e.toString());
@@ -34,15 +32,15 @@ const InputText = () => {
 	useEffect(() => {
 		if (value.length > 3)
 			debouncedData(value);
-		if (value.length === 0)
-			setResults([]);
+		// if (value.length === 0)
+		// 	setResults([]);
 		return () => {
 			debouncedData.cancel();
 		};
 	}, [value]);
 
 	return (
-		<header className='inputContainer'>
+		<header className='Search-Container'>
 			<form action="">
 				<input
 					type="text"
@@ -63,9 +61,8 @@ const InputText = () => {
 					<SuggestList results={results} />
 				)
 			}
-			{/* <p>Total requests made: {requestCount}</p> */}
 		</header >
 	);
 };
 
-export default InputText;
+export default SearchBar;

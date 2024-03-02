@@ -36,6 +36,17 @@ const Card = () => {
 		<Toast message={error} type='error' />
 	};
 
+	const extractDate = (createdAtString: string | undefined) => {
+		if (createdAtString) {
+			const createdAt = new Date(createdAtString);
+			const year = createdAt.getFullYear();
+			const month = String(createdAt.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed, so add 1
+			const date = String(createdAt.getDate()).padStart(2, '0');
+			return `${year}-${month}-${date}`;
+		}
+		return '';
+	};
+
 	const kpis = [
 		{
 			label: 'Followers',
@@ -49,11 +60,23 @@ const Card = () => {
 			label: 'Repos',
 			value: user?.public_repos,
 		},
+		{
+			label: 'Gists',
+			value: user?.public_gists,		
+		},
+		{
+			label: 'Created',
+			value: extractDate(user?.created_at),
+		},
+		{
+			label: 'Updated',
+			value: extractDate(user?.updated_at),
+		},
 	];
 
 
 	return (
-		<main className='main'>
+		<section className='section'>
 			{
 				user !== null && (
 					<>
@@ -61,7 +84,7 @@ const Card = () => {
 							<img src={user.avatar_url} alt={user.login} className='user-profile' />
 							<Tooltip text={user.login} children={user.name} />
 							<p className='bio'>{user.bio}</p>
-							{user.location && <p>{user.location}</p>}
+							{user.location && <p className='location'>{user.location}</p>}
 							<div className='social-links'>
 								{
 									user.html_url && user.html_url !== '' &&
@@ -87,7 +110,7 @@ const Card = () => {
 					</>
 				)
 			}
-		</main>
+		</section>
 	);
 }
 

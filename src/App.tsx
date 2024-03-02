@@ -1,15 +1,17 @@
 import './App.css'
 import Card from './components/Card'
 import Footer from './components/Footer'
-import InputText from './components/InputText'
+import SearchBar from './components/SearchBar'
 
 function App() {
 	return (
-		<div className='app'>
-			<InputText />
-			<Card />
+		<>
+			<main className='main'>
+				<SearchBar />
+				<Card />
+			</main>
 			<Footer />
-		</div>
+		</>
 	)
 }
 
